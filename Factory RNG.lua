@@ -151,7 +151,7 @@ end
 })
 
 spawn(function()
-while wait() do
+while wait(0.5) do
     if autotruck == true then
         local carsFolder = workspace:FindFirstChild("Cars")
         if not carsFolder then return end
