@@ -137,6 +137,49 @@ while wait() do
 end
 end)
 
+local MyToggle = Auto:AddToggle("MyToggle", {
+    Text = "Auto Buy And Claim Truck",
+    Default = false,
+    Tooltip = "Toggle Auto Buy And Claim Truck",
+    Callback = function(Value)
+    if Value then
+        autotruck = true
+    else
+        autotruck = false
+    end
+end
+})
+
+spawn(function()
+while wati(0.25) do
+    if autotruck == true then
+                local carsFolder = workspace:FindFirstChild("Cars")
+        if not carsFolder then return end
+
+        local replicatedStorage = game:GetService("ReplicatedStorage")
+        local clientToServer = replicatedStorage:WaitForChild("ClientToServer", 9e9)
+        local buyEvent = clientToServer:WaitForChild("BuyTruckMachine", 9e9)
+        local claimEvent = clientToServer:WaitForChild("ClaimTruckMachine", 9e9)
+
+        for _, v in ipairs(carsFolder:GetChildren()) do
+            if v:IsA("Model") then
+                local n = v.Name:lower()
+                if n:find("car") or n:find("item") or n:find("truck") then
+                    v:Destroy()
+                else
+                    buyEvent:InvokeServer(v.Name)
+                    claimEvent:FireServer(v.Name)
+                    v:Destroy()
+                    break
+                end
+            end
+        end
+    end,
+else
+end
+end
+end)
+
 local Button = Auto:AddButton({
 Text = "Remove Notification",
 Func = function()
