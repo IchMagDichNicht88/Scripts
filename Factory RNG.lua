@@ -174,10 +174,10 @@ while wati(0.25) do
                 end
             end
         end
+    else
+    end
+end
     end,
-else
-end
-end
 end)
 
 local Button = Auto:AddButton({
