@@ -17,7 +17,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/IchMagDichNicht88/Scr
 
 --/ Factory RNG
 elseif placeId == 76381016848158 then
-    print("daddyFactory RNG")
+    print("Factory RNG")
 loadstring(game:HttpGet("https://raw.githubusercontent.com/IchMagDichNicht88/Scripts/main/Factory%20RNG.lua", true))()
   
   --/ Egg Incremental
@@ -40,7 +40,11 @@ elseif placeId == 10057350313 then
     print("Ore Smelting Tycoon")
 loadstring(game:HttpGet("https://raw.githubusercontent.com/IchMagDichNicht88/Scripts/main/Ore%20Smelting%20Tycoon.lua", true))()
 
-
+    --/ Dig
+elseif placeId == 126244816328678 then
+    print("Dig")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/IchMagDichNicht88/Scripts/refs/heads/main/dig.lua", true))()
+    
 else
     print("No Script Found For This Games")
 end
